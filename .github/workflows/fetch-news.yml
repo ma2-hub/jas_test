@@ -1,0 +1,94 @@
+name: Fetch JAS News
+
+on:
+  # 1時間ごとに自動実行
+  schedule:
+    - cron: '0 * * * *'
+  # 手動実行も可能
+  workflow_dispatch:
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Fetch RSS and convert to JSON
+        run: |
+          python3 << 'EOF'
+          import urllib.request
+          import xml.etree.ElementTree as ET
+          import json
+          import re
+          from datetime import datetime, timezone
+
+          FEED_URL = 'https://www.jas.or.jp/wp/feed/'
+          MAX_ITEMS = 10
+
+          # RSSを取得
+          req = urllib.request.Request(
+              FEED_URL,
+              headers={'User-Agent': 'Mozilla/5.0 (compatible; NewsBot/1.0)'}
+          )
+          with urllib.request.urlopen(req, timeout=15) as res:
+              xml_data = res.read()
+
+          # XMLをパース
+          root = ET.fromstring(xml_data)
+          ns = {
+              'content': 'http://purl.org/rss/1.0/modules/content/',
+              'media':   'http://search.yahoo.com/mrss/',
+              'dc':      'http://purl.org/dc/elements/1.1/',
+          }
+
+          items = []
+          for item in root.findall('.//item')[:MAX_ITEMS]:
+              def get(tag, ns_key=None):
+                  if ns_key:
+                      el = item.find(f'{{{ns[ns_key]}}}{tag}')
+                  else:
+                      el = item.find(tag)
+                  return (el.text or '').strip() if el is not None else ''
+
+              # サムネイル取得（複数の場所を探す）
+              thumb = ''
+              media_el = item.find('media:thumbnail', ns) or item.find('media:content', ns)
+              if media_el is not None:
+                  thumb = media_el.get('url', '')
+              if not thumb:
+                  # content:encoded の中から最初の img src を抽出
+                  encoded = get('encoded', 'content')
+                  m = re.search(r'<img[^>]+src=["\']([^"\']+)["\']', encoded)
+                  if m:
+                      thumb = m.group(1)
+
+              categories = [c.text.strip() for c in item.findall('category') if c.text]
+
+              items.append({
+                  'title':      get('title'),
+                  'link':       get('link'),
+                  'pubDate':    get('pubDate'),
+                  'categories': categories,
+                  'thumbnail':  thumb,
+              })
+
+          output = {
+              'updated': datetime.now(timezone.utc).isoformat(),
+              'items':   items,
+          }
+
+          with open('news.json', 'w', encoding='utf-8') as f:
+              json.dump(output, f, ensure_ascii=False, indent=2)
+
+          print(f"✅ {len(items)} 件を news.json に保存しました")
+          EOF
+
+      - name: Commit and push
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add news.json
+          # 変更がある場合のみコミット
+          git diff --staged --quiet || git commit -m "chore: update news.json [skip ci]"
+          git push
