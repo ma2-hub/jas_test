@@ -1,6 +1,16 @@
 {
-  "updated": "2026-08-26T09:32:52.548893+00:00",
+  "updated": "2026-08-26T10:26:59.414511+00:00",
   "items": [
+    {
+      "title": "報道に対するお詫びと再発防止について",
+      "link": "https://www.jas.or.jp/wp/archives/2911",
+      "pubDate": "Wed, 26 Aug 2026 09:35:55 +0000",
+      "categories": [
+        "新着情報",
+        "重要なお知らせ"
+      ],
+      "thumbnail": ""
+    },
     {
       "title": "直近の農政課題に関する要請を行いました／JA滋賀中央会",
       "link": "https://www.jas.or.jp/wp/archives/2906",
@@ -90,16 +100,6 @@
         "新着情報"
       ],
       "thumbnail": "https://www.jas.or.jp/wp/wp-content/uploads/2026/05/1000007431-300x226.jpg"
-    },
-    {
-      "title": "JAしが女性協議会　通常総会を開催",
-      "link": "https://www.jas.or.jp/wp/archives/2824",
-      "pubDate": "Wed, 27 May 2026 09:09:21 +0000",
-      "categories": [
-        "新着情報",
-        "ＪＡしが女性協議会"
-      ],
-      "thumbnail": "https://www.jas.or.jp/wp/wp-content/uploads/2026/05/389253557ad743ba8b34e015a7ce2b52-300x186.jpg"
     }
   ]
 }
