@@ -1,6 +1,24 @@
 {
-  "updated": "2026-10-30T09:22:11.019010+00:00",
+  "updated": "2026-10-30T16:24:02.065047+00:00",
   "items": [
+    {
+      "title": "しがの農政 ミニ通信vol.15",
+      "link": "https://www.jas.or.jp/wp/archives/3042",
+      "pubDate": "Fri, 30 Oct 2026 10:12:24 +0000",
+      "categories": [
+        "しがの農政ミニ通信"
+      ],
+      "thumbnail": "https://www.jas.or.jp/wp/wp-content/uploads/2026/10/7ec503590af40bb0aee7b8fb7152faa9-e1793355039216-723x1024.png"
+    },
+    {
+      "title": "しがの農政 ミニ通信vol.14",
+      "link": "https://www.jas.or.jp/wp/archives/3034",
+      "pubDate": "Fri, 30 Oct 2026 10:09:28 +0000",
+      "categories": [
+        "しがの農政ミニ通信"
+      ],
+      "thumbnail": "https://www.jas.or.jp/wp/wp-content/uploads/2026/10/d09ea37b851ed61f12678208de582d4d-e1793354843234-723x1024.png"
+    },
     {
       "title": "滋賀県JA女性部・家の光大会を開催しました！",
       "link": "https://www.jas.or.jp/wp/archives/3027",
@@ -76,24 +94,6 @@
         "新着情報"
       ],
       "thumbnail": "https://www.jas.or.jp/wp/wp-content/uploads/2026/09/image0-1024x768.jpg"
-    },
-    {
-      "title": "滋賀県農畜水産業経営強化緊急対策事業費補助金の追加募集が始まりました",
-      "link": "https://www.jas.or.jp/wp/archives/2992",
-      "pubDate": "Mon, 14 Sep 2026 09:01:54 +0000",
-      "categories": [
-        "新着情報"
-      ],
-      "thumbnail": "https://www.jas.or.jp/wp/wp-content/uploads/2026/09/5d161aac2f50fad6afb2a6d4ab1a5387-722x1024.png"
-    },
-    {
-      "title": "しがの農政 ミニ通信vol.12",
-      "link": "https://www.jas.or.jp/wp/archives/2990",
-      "pubDate": "Mon, 14 Sep 2026 08:50:20 +0000",
-      "categories": [
-        "しがの農政ミニ通信"
-      ],
-      "thumbnail": "https://www.jas.or.jp/wp/wp-content/uploads/2026/09/vol.12-724x1024.png"
     }
   ]
 }
